@@ -19,6 +19,7 @@ import java.nio.file.Paths;
 import java.text.Normalizer;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class Main {
