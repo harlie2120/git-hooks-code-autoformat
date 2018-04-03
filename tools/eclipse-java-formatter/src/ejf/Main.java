@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.Normalizer;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Properties;
 
 public class Main {
@@ -73,9 +74,9 @@ public class Main {
       return doc.get();
     }
 
-    private static Properties props(final String xmlFile) throws ParserConfigurationException,
+    private static Map<String, String> props(final String xmlFile) throws ParserConfigurationException,
         IOException, SAXException {
-      Properties r = new Properties();
+      Map<String, String> r = new HashMap<String, String>();
 
       org.w3c.dom.Document doc =
           DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);
@@ -93,7 +94,7 @@ public class Main {
           if (setting.getNodeType() == Node.ELEMENT_NODE) {
             String id = ((Element) setting).getAttribute("id");
             String value = ((Element) setting).getAttribute("value");
-            r.setProperty(id.trim(), value.trim());
+            r.put(id.trim(), value.trim());
           }
         }
       }
